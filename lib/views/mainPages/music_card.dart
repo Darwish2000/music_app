@@ -11,14 +11,14 @@ class MusicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var prov = Provider.of<MainProv>(context);
+    var mainProv = Provider.of<MainProv>(context);
     return InkWell(
       onTap: () {
-        prov.setTrack(result.previewUrl, index, result);
+        mainProv.setTrack(result.previewUrl, index, result);
       },
       child: Container(
           decoration: BoxDecoration(
-              color: prov.selectedCardIndex != index
+              color: mainProv.selectedCardIndex != index
                   ? const Color(0xFF212A32)
                   : Colors.white12,
               borderRadius: BorderRadius.circular(11)),
@@ -31,20 +31,22 @@ class MusicCard extends StatelessWidget {
                   height: 33,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color:prov.selectedCardIndex != index
-                        ? const Color(0xFFFFFFFF) : const Color(0xFFF75191),
+                    color: mainProv.selectedCardIndex != index
+                        ? const Color(0xFFFFFFFF)
+                        : const Color(0xFFF75191),
                   ),
                   child: Center(
-                    child:prov.selectedCardIndex != index
+                    child: mainProv.selectedCardIndex != index
                         ? Image.asset(
-                      'assets/icons/play.png',
-                    ): SizedBox(
-                      width: 11,
-                      height: 13,
-                      child: Image.asset(
-                        'assets/icons/pause.png',
-                      ),
-                    ),
+                            'assets/icons/play.png',
+                          )
+                        : SizedBox(
+                            width: 11,
+                            height: 13,
+                            child: Image.asset(
+                              'assets/icons/pause.png',
+                            ),
+                          ),
                   ),
                 ),
                 const SizedBox(
@@ -54,7 +56,7 @@ class MusicCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      prov.removeBracketsAndContents(result.trackName),
+                      mainProv.removeBracketsAndContents(result.trackName),
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const SizedBox(
@@ -68,7 +70,7 @@ class MusicCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  prov.formatMilliseconds(result.trackTimeMillis),
+                  mainProv.formatMilliseconds(result.trackTimeMillis),
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],

@@ -81,7 +81,7 @@ class MusicPageContent extends StatelessWidget {
 
         ),
         const SizedBox(
-          height: 75,
+          height: 50,
         ),
         Row(
           mainAxisSize: MainAxisSize.min,

@@ -13,7 +13,7 @@ class PlayedMusicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var prov = Provider.of<MainProv>(context);
+    var mainProv = Provider.of<MainProv>(context);
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -45,7 +45,7 @@ class PlayedMusicCard extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    prov.removeBracketsAndContents(selectedSong.trackName),
+                    mainProv.removeBracketsAndContents(selectedSong.trackName),
                     style: Theme.of(context).textTheme.labelSmall,
                   ),
                   const Spacer(),

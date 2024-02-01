@@ -8,26 +8,26 @@ import 'package:siri_wave/siri_wave.dart';
 class MainProv with ChangeNotifier {
   Song? songs;
   bool pageIsLoading = true;
-  bool pauseFlag = false;
   int? selectedCardIndex = -1;
   Result? selectedSong;
-  bool playingMusic =false;
   AudioPlayer? audioPlayer;
-  IOS7SiriWaveformController  siriController1 = IOS7SiriWaveformController(
+
+  IOS7SiriWaveformController siriController1 = IOS7SiriWaveformController(
     amplitude: 0.5,
     color: Colors.grey,
     frequency: 7,
     speed: 0.12,
   );
-  IOS7SiriWaveformController  siriController2 = IOS7SiriWaveformController(
+  IOS7SiriWaveformController siriController2 = IOS7SiriWaveformController(
     amplitude: 0.5,
     color: Colors.grey,
     frequency: 7,
     speed: 0.12,
   );
+
   MainProv() {
     fetchSongs();
-    audioPlayer =AudioPlayer();
+    audioPlayer = AudioPlayer();
   }
 
   /*
@@ -45,42 +45,34 @@ class MainProv with ChangeNotifier {
   } -->>
   */
 
-
   fetchSongs() async {
     songs = await Song.fetchSongs();
     pageIsLoading = false;
     notifyListeners();
   }
- Future<void> setTrack(String audioUrl, int cardIndex, Result song,{bool autoPlay=true})async {
-   await audioPlayer?.setUrl(audioUrl);
 
-   if(autoPlay) {
-     playAudio(audioUrl, cardIndex, song);
-   }
- }
- void playAudio(String audioUrl, int cardIndex, Result song) async {
+  Future<void> setTrack(String audioUrl, int cardIndex, Result song,
+      {bool autoPlay = true}) async {
+    await audioPlayer?.setUrl(audioUrl);
+
+    if (autoPlay) {
+      playAudio(audioUrl, cardIndex, song);
+    }
+  }
+
+  Future<void> playAudio(String audioUrl, int cardIndex, Result song) async {
     audioPlayer?.play();
-   siriController2.speed= siriController1.speed= 0.12;
+    siriController2.speed = siriController1.speed = 0.12;
 
     selectedCardIndex = cardIndex;
-    playingMusic = !playingMusic;
-    pauseFlag = !pauseFlag;
     selectedSong = song;
     notifyListeners();
   }
 
-  changePauseFlag(){
-    pauseFlag = true;
-    notifyListeners();
-  }
+  Future<void> pauseAudio(String audioUrl, int cardIndex) async {
+    await audioPlayer?.pause();
+    siriController2.speed = siriController1.speed = 0;
 
- void pauseAudio(String audioUrl, int cardIndex) async {
-    //await audioPlayer?.setUrl(audioUrl);
-   await audioPlayer?.pause();
-    siriController2.speed= siriController1.speed=0;
-
-    playingMusic = !playingMusic;
-    pauseFlag = !pauseFlag;
     notifyListeners();
   }
 
@@ -100,6 +92,4 @@ class MainProv with ChangeNotifier {
     RegExp exp = RegExp(r'\([^)]*\)|\[[^\]]*\]');
     return input.replaceAll(exp, '').trim();
   }
-
-
 }

@@ -19,7 +19,6 @@ class MusicPage extends StatelessWidget {
           leading: IconButton(
             icon: Image.asset("assets/icons/arrow_back.png"),
             onPressed: () {
-              mainProv.changePauseFlag();
               Navigator.pop(context);
             },
           ),

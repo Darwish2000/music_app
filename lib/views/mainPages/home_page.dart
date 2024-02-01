@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var prov = Provider.of<MainProv>(context);
+    var mainProv = Provider.of<MainProv>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -24,12 +24,12 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: !prov.pageIsLoading
+      body: !mainProv.pageIsLoading
           ? Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: ListView.separated(
-                itemCount: prov.songs!.results.length,
-                itemBuilder: (context, index) => (MusicCard(result: prov.songs!.results[index],index: index,)),
+                itemCount: mainProv.songs!.results.length,
+                itemBuilder: (context, index) => (MusicCard(result: mainProv.songs!.results[index],index: index,)),
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 10,
                 ),
