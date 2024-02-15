@@ -1,8 +1,6 @@
 # music_app Mohammad Darwish
 
-A new Flutter project.
-
-You can check the UI images to see how the app looks like
+To view how the app looks, check the images_UI folder.
 
 If you face an issue running the app from this error [ ERROR:D8: Cannot fit requested classes in a single dex file (# methods: 67905 > 65536) ] --> steps to solve it
 
@@ -25,4 +23,4 @@ If you face an issue running the app from this error [ ERROR:D8: Cannot fit requ
     implementation 'com.android.support:multidex:1.0.3'
 }
 
-4) Save changes and run the app again :) 
+4) Run the app again after saving your modifications.
