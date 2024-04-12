@@ -1,6 +1,5 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:music_app/controllers/main_prov.dart';
 import 'package:music_app/views/widgtes/custom_button.dart';
 import 'package:provider/provider.dart';

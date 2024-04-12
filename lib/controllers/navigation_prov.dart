@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:music_app/views/mainPages/home_page.dart';
 import 'package:music_app/views/podcasts_page.dart';

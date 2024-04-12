@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class Song {
@@ -26,10 +27,14 @@ class Song {
         Song songs = Song.fromJson(json);
         return songs;
       } else {
-        print('Failed to load data: ${response.statusCode}');
+        if (kDebugMode) {
+          print('Failed to load data: ${response.statusCode}');
+        }
       }
     } catch (e) {
-      print('Error: $e');
+      if (kDebugMode) {
+        print('Error: $e');
+      }
     }
   }
 }

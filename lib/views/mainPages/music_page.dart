@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:siri_wave/siri_wave.dart';
 
 class MusicPage extends StatelessWidget {
-  const MusicPage({Key? key});
+  const MusicPage({super.key});
 
   @override
   Widget build(BuildContext context) {
